@@ -355,7 +355,6 @@ main {
 }
 
 .info-content .title2 {
-  /* outline: 1px solid red; */
   color: var(--white-1);
   background: var(--onyx);
   font-size: var(--fs-8);
@@ -367,7 +366,6 @@ main {
 }
 
 .info_more-btn {
-  /* outline: 1px solid red; */
   position: absolute;
   top: -15px;
   right: -15px;
