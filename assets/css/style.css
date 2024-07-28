@@ -367,7 +367,7 @@ main {
 }
 
 .info_more-btn {
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
   position: absolute;
   top: -15px;
   right: -15px;
