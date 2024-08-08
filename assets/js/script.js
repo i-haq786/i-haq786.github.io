@@ -176,23 +176,13 @@ const sendEmail = (e) => {
     (result) => {
       console.log("Email sent successfully!", result.text);
 
-      showCard(
-        "success",
-        "Success!",
-        "Email sent successfully.",
-        successIcon
-      );
+      showCard("success", "Success!", "Email sent successfully.", successIcon);
 
-       form.reset(); // Optional: Reset the form after successful submission
+      form.reset(); // Optional: Reset the form after successful submission
     },
     (error) => {
       console.error("Error sending email:", error.text);
-      showCard(
-        "error",
-        "Error!",
-        "Failed to send. Retry!",
-        errorIcon
-      );
+      showCard("error", "Error!", "Failed to send. Retry!", errorIcon);
     }
   );
 };
@@ -216,8 +206,8 @@ function showCard(type, message, subMessage, newSVG) {
 
     messageText.textContent = message;
     subText.textContent = subMessage;
-    iconContainer.replaceChild(newSVG, iconContainer.querySelector('svg'));
-    
+    iconContainer.replaceChild(newSVG, iconContainer.querySelector("svg"));
+
     // Show the card
     card.classList.add("show");
 
@@ -257,3 +247,32 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
   });
 }
+
+// download CV when download button is clicked
+const resumeBtn = document.querySelector(".DownloadBtn");
+
+resumeBtn.addEventListener("click", function () {
+  // Create a temporary anchor element
+  const link = document.createElement("a");
+
+  // Set the href attribute to the path of the PDF
+  link.href = "assets/images/Inzamam'sResume.pdf";
+
+  // Set the download attribute with the filename you want for the downloaded file
+  link.download = "Inzamam'sResume.pdf";
+
+  // Append the link to the body (required for Firefox)
+  document.body.appendChild(link);
+
+  // Programmatically click the link to trigger the download
+  link.click();
+
+  // Remove the link from the DOM
+  document.body.removeChild(link);
+});
+
+//open in new tab when  button is clicked
+// const resumeBtn = document.querySelector(".DownloadBtn");
+// resumeBtn.addEventListener("click", function () {
+//   window.open("assets/images/Inzamam'sResume.pdf", "_blank");
+// });

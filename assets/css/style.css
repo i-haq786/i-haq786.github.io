@@ -331,13 +331,13 @@ main {
 
 .sidebar {
   margin-bottom: 15px;
-  max-height: 116px;
+  max-height: 120px;
   overflow: hidden;
   transition: var(--transition-2);
 }
 
 .sidebar.active {
-  max-height: 420px;
+  max-height: fit-content;
 }
 
 .sidebar-info {
@@ -366,17 +366,6 @@ main {
   background: var(--onyx);
   font-size: var(--fs-8);
   font-weight: var(--fw-300);
-  width: max-content;
-  padding: 3px 12px;
-  border-radius: 8px;
-}
-
-.info-content .title2 {
-  color: var(--white-1);
-  background: var(--onyx);
-  font-size: var(--fs-8);
-  font-weight: var(--fw-300);
-  margin-top: 10px;
   width: max-content;
   padding: 3px 12px;
   border-radius: 8px;
@@ -946,6 +935,77 @@ main {
   border-radius: inherit;
 }
 
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 100%);
+  }
+  to {
+    transform: translate(-50%, 0%);
+  }
+}
+
+.DownloadBtn {
+  z-index: 1000;
+  width: 102px; /* Reduced width */
+  height: 32px; /* Reduced height */
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    to right,
+    #77530a,
+    #ffd277,
+    #77530a,
+    #77530a,
+    #ffd277,
+    #77530a
+  );
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: fixed; /* Fixed position to stay on top */
+  bottom: 70px; /* Position at the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to center accurately */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  box-shadow: 0 -4px 10px rgb(130, 114, 51, 0.8); /* Shadow */
+  animation: slideUp 1s ease-out; /* Slide up animation */
+}
+
+.DownloadBtn::before {
+  position: absolute;
+  content: "Download CV";
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 10px;
+  transition-duration: 1s;
+  background-color: var(--eerie-black-1);
+  background-size: 200%;
+  font-size: 60%;
+}
+
+.DownloadBtn:hover {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.DownloadBtn:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.DownloadBtn:active {
+  transform: scale(0.95);
+}
+
 /*-----------------------------------*\
   #PORTFOLIO
 \*-----------------------------------*/
@@ -1352,6 +1412,9 @@ textarea.form-input::-webkit-resizer {
 
 @media (min-width: 450px) {
   /**
+   * Sidebar
+   */
+  /**
    * client
    */
 
@@ -1439,7 +1502,8 @@ textarea.form-input::-webkit-resizer {
   }
 
   .sidebar.active {
-    max-height: 584px;
+    /* max-height: 584px; */
+    max-height: fit-content;
   }
 
   .sidebar-info {
@@ -1643,6 +1707,17 @@ textarea.form-input::-webkit-resizer {
 
   .skills-item:not(:last-child) {
     margin-bottom: 25px;
+  }
+
+  /**DOWNLOAD BUTTON */
+  .DownloadBtn {
+    width: 120px; /* Adjust width */
+    height: 36px; /* Adjust height */
+    bottom: 80px; /* Adjust bottom position */
+  }
+
+  .DownloadBtn::before {
+    font-size: 80%; /* Adjust font size */
   }
 
   /**
@@ -1892,6 +1967,19 @@ textarea.form-input::-webkit-resizer {
   }
 
   /**
+   * RESUME
+   */
+
+  /**DOWNLOAD BUTTON */
+  .DownloadBtn {
+    bottom: 30px; /* Adjust bottom position */
+  }
+
+  .DownloadBtn::before {
+    font-size: 80%; /* Adjust font size */
+  }
+
+  /**
    * PORTFOLIO
    */
 
@@ -1921,7 +2009,7 @@ textarea.form-input::-webkit-resizer {
   box-sizing: border-box;
   padding: 10px 15px;
   background-color: var(--eerie-black-1);
-  border:1px solid var(--jet);
+  border: 1px solid var(--jet);
   /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
   position: fixed;
   bottom: 10px;
@@ -2210,10 +2298,29 @@ textarea.form-input::-webkit-resizer {
   }
 
   /**
-	 * RESUME
-	 */
+   * RESUME
+   */
+
+  /*
+  *DOWNLOAD BUTTON 
+  */
+  .DownloadBtn {
+    bottom: 30px; /* Adjust bottom position */
+    left: 57%;
+    /* transform: translateX(-57%); */
+  }
+
+  .DownloadBtn::before {
+    font-size: 80%; /* Adjust font size */
+  }
 
   .timeline-text {
     max-width: 700px;
   }
 }
+
+/* @media screen and (max-width: 768px) {
+  .social-list {
+    padding-bottom: 400px !important;
+  }
+} */
